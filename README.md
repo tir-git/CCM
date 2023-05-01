@@ -1,6 +1,5 @@
 # CCM
-a new tool for classcard
+A New Macro tool for Classcard : English vocabulary learning program. 
 
-CCM is Classcard Macro that will help you to save your time and energy.
-Use this tool to save your time
+CCM is a new macro that will support both Android and Windows. 
 
