@@ -1,7 +1,7 @@
 import requests
 from selenium import webdriver
 
-def world_learn (driver, num):
+def world_learn (num):
     # num 길이의 리스트 생성 (초기값 0)
     eng=[0 for i in range (num)]
     kor=[0 for i in range (num)]
