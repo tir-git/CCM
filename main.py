@@ -70,8 +70,3 @@ cards_ele=html.find("div", class_="flip-body")
 num=len(cards_ele.find_all("div", class_="flip-card"))
 
 time.sleep(1)
-
-from function import eng, kor, mean
-print (eng)
-print(kor)
-print(mean)
