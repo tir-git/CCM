@@ -17,8 +17,9 @@ from selenium.webdriver.chrome.service import Service
 from function import world_learn
 
 # Chrome Driver Autoinstall & Setting
-print("최적의 구동 환경을 위하여 크롬 브라우저를 자동으로 설치합니다.")
-check=input("Proceed? (Y/n) : ")
+print("최적의 구동 환경을 위하여 크롬 브라우저를 자동으로 설치합니다.\n이미 크롬 브라우저가 설치되어 있습니까?")
+check=input("Proceed? (Y/n/a) : ")
+
 if check=='y':
     options=webdriver.ChromeOptions()
     options.add_experimental_option("excludeSwitches",["enable-logging"])
@@ -26,7 +27,6 @@ if check=='y':
     driver=webdriver.Chrome(service=Service(chromedriver_autoinstaller.install()),options=options)
 else :
     print("크롬 브라우저 설치가 거부되었습니다.")
-    print("Press any key to quit...")
     quit()
 
 # Classcard Login
@@ -71,7 +71,37 @@ num=len(cards_ele.find_all("div", class_="flip-card"))
 
 time.sleep(1)
 
-from function import eng, kor, mean
-print (eng)
-print(kor)
-print(mean)
+# for i in range (num):
+#     eng[i]=driver.find_by_element_by_xpath(f"//*[@id='tab_set_all']/div[2]/div[{i}]/div[4]/div[1]/div[1]/div/div").text
+#     driver.find_by_css_selector("#tab_set_all > div.card-list-title > div > div:nth-child(1) > a").click
+#     kor[i]=driver.find_by_element_by_xpath(f"//*[@id='tab_set_all']/div[2]/div[{i}]/div[4]/div[2]/div[1]/div/div").text
+#     mean=dict(zip(kor,eng))
+world_learn(driver,num)
+
+print( """
+원하는 기능을 선택해주세요.
+1. 단어 기본학습
+2. 단어 리콜학습
+3. 단어 스펠학습
+4. 단어 테스트
+5. 전체 실행
+6. 종료
+""")
+check=int(input("원하는 옵션을 입력해주세요. : "))
+
+if check==1:
+    print()
+elif check==2:
+    print()
+elif check==3:
+    print()
+elif check==4:
+    print()
+elif check==5:
+    print()
+elif check==6:
+    print("Press Ctrl+C to quit...")
+    if KeyboardInterrupt:
+        quit()
+if ValueError:
+    print()
