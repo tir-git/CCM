@@ -17,8 +17,8 @@ from selenium.webdriver.chrome.service import Service
 from function import world_learn
 
 # Chrome Driver Autoinstall & Setting
-print("최적의 구동 환경을 위하여 크롬 브라우저를 자동으로 설치합니다.\n이미 크롬 브라우저가 설치되어 있습니까?")
-check=input("Proceed? (Y/n/a) : ")
+print("최적의 구동 환경을 위하여 크롬 브라우저를 자동으로 설치합니다.")
+check=input("Proceed? (Y/n) : ")
 
 if check=='y':
     options=webdriver.ChromeOptions()
@@ -68,6 +68,8 @@ rangesel1.click()
 html=BeautifulSoup(driver.page_source, "html.parser")
 cards_ele=html.find("div", class_="flip-body")
 num=len(cards_ele.find_all("div", class_="flip-card"))
+
+world_learn(ccsite,num)
 
 time.sleep(1)
 
