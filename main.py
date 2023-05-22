@@ -66,7 +66,7 @@ rangesel1=wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, "body > 
 rangesel1.click()
 
 html=BeautifulSoup(driver.page_source, "html.parser")
-cards_ele=html.find("div", class_="flip-body")
+cards_ele=driver.find_elements(By.CSS_SELECTOR, "body > div.mw-1080 > div.p-b-sm > div.set-body.m-t-25.m-b-lg > div.m-b-md > div.tab-content.m-t-sm")
 num=len(cards_ele.find_all("div", class_="flip-card"))
 
 world_learn(ccsite,num)
