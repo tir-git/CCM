@@ -28,6 +28,8 @@ if check=='y':
 else :
     print("크롬 브라우저 설치가 거부되었습니다.")
     quit()
+# 1 2 3 방식으로 바꿀 것. 불필요하게 다시 크롬 브라우저를 세팅하는데 시간이 걸림.
+
 
 # Classcard Login
 driver.get("https://www.classcard.net/login")
@@ -65,15 +67,20 @@ rangesel.click()
 rangesel1=wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, "body > div.mw-1080 > div.p-b-sm > div.set-body.m-t-25.m-b-lg > div.m-b-md > div > ul > li:nth-child(1)")))
 rangesel1.click()
 
-html=BeautifulSoup(driver.page_source, "html.parser")
-cards_ele=driver.find_elements(By.CSS_SELECTOR, "body > div.mw-1080 > div.p-b-sm > div.set-body.m-t-25.m-b-lg > div.m-b-md > div.tab-content.m-t-sm")
-num=len(cards_ele.find_all("div", class_="flip-card"))
+# Load the vocabulary set
+response=requests.get(ccsite)
+html_content=response.text
+html=BeautifulSoup(html_content, "html.parser")
+card_element="body > div.mw-1080 > div.p-b-sm > div.set-body.m-t-25.m-b-lg > div.tab-content.m-t-sm > div.tab_set_all > div.flip-body.word-set.m-t-md.m-b-mb"
+div_elements=html.find_all("div."+ card_element)
+num=len(div_elements)
 
-world_learn(ccsite,num)
+print (num)
+# world_learn(ccsite,num)
 
-time.sleep(1)
+# time.sleep(1)
 
-from function import eng, kor, mean
-print (eng)
-print(kor)
-print(mean)
+# from function import eng, kor, mean
+# print (eng)
+# print(kor)
+# print(mean)
