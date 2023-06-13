@@ -71,11 +71,11 @@ rangesel1.click()
 response=requests.get(ccsite)
 html_content=response.text
 html=BeautifulSoup(html_content, "html.parser")
-card_element="body > div.mw-1080 > div.p-b-sm > div.set-body.m-t-25.m-b-lg > div.tab-content.m-t-sm > div.tab_set_all > div.flip-body.word-set.m-t-md.m-b-mb"
-div_elements=html.find_all("div."+ card_element)
-num=len(div_elements)
+# card_element="body > div.mw-1080 > div.p-b-sm > div.set-body.m-t-25.m-b-lg > div.tab-content.m-t-sm > div.tab_set_all > div.flip-body.word-set.m-t-md.m-b-mb"
+# div_elements=html.find_all("div."+ card_element)
+# num=len(div_elements)
 
-print (num)
+print (html)
 # world_learn(ccsite,num)
 
 # time.sleep(1)
