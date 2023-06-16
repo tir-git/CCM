@@ -73,12 +73,14 @@ rangesel1.click()
 response=requests.get(ccsite)
 html_content=response.text
 html=BeautifulSoup(html_content, "html.parser")
-card_element="body"
+# card_element=""
+card_element=wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, "body > div.mw-1080 > div.p-b-sm > div.set-body.m-t-25.m-b-lg > div.tab-content.m-t-sm > div.tab_set_all > div.flip-body.word-set.m-t-md.m-b-mb")))
 # card_element="body > div.mw-1080 > div.p-b-sm > div.set-body.m-t-25.m-b-lg > div.tab-content.m-t-sm > div.tab_set_all > div.flip-body.word-set.m-t-md.m-b-mb"
 
-div_elements=html.find_all("div."+ card_element)
+div_elements=html.select(card_element)
 num=len(div_elements)
 print (num)
+
 # world_learn(ccsite,num)
 
 # time.sleep(1)
