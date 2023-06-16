@@ -17,19 +17,21 @@ from selenium.webdriver.chrome.service import Service
 from function import world_learn
 
 # Chrome Driver Autoinstall & Setting
-print("최적의 구동 환경을 위하여 크롬 브라우저를 자동으로 설치합니다.")
-check=input("Proceed? (Y/n) : ")
+print("크롬 브라우저가 컴퓨터에 설치되어 있습니까?")
+check=input("Proceed? (Y/n)...")
 
 if check=='y':
-    options=webdriver.ChromeOptions()
-    options.add_experimental_option("excludeSwitches",["enable-logging"])
-    driver=webdriver.Chrome()
-    driver=webdriver.Chrome(service=Service(chromedriver_autoinstaller.install()),options=options)
+    pass
 else :
-    print("크롬 브라우저 설치가 거부되었습니다.")
-    quit()
-# 1 2 3 방식으로 바꿀 것. 불필요하게 다시 크롬 브라우저를 세팅하는데 시간이 걸림.
-
+    print("크롬 브라우저를 설치하시겠습니까?")
+    check=input("Proceed? (Y/n)...")
+    if check=='y':
+        options=webdriver.ChromeOptions()
+        options.add_experimental_option("excludeSwitches",["enable-logging"])
+        driver=webdriver.Chrome()
+        driver=webdriver.Chrome(service=Service(chromedriver_autoinstaller.install()),options=options)
+    else :
+        quit()
 
 # Classcard Login
 driver.get("https://www.classcard.net/login")
@@ -71,11 +73,12 @@ rangesel1.click()
 response=requests.get(ccsite)
 html_content=response.text
 html=BeautifulSoup(html_content, "html.parser")
+card_element="body"
 # card_element="body > div.mw-1080 > div.p-b-sm > div.set-body.m-t-25.m-b-lg > div.tab-content.m-t-sm > div.tab_set_all > div.flip-body.word-set.m-t-md.m-b-mb"
-# div_elements=html.find_all("div."+ card_element)
-# num=len(div_elements)
 
-print (html)
+div_elements=html.find_all("div."+ card_element)
+num=len(div_elements)
+print (num)
 # world_learn(ccsite,num)
 
 # time.sleep(1)
