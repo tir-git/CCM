@@ -4,12 +4,13 @@ import time
 import warnings
 import chromedriver_autoinstaller
 
-from selenium.webdriver.support.ui import WebDriverWait
+
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 
 from bs4 import BeautifulSoup
 from selenium import webdriver
+from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import ElementClickInterceptedException
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.chrome.service import Service
@@ -70,22 +71,23 @@ rangesel1=wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, "body > 
 rangesel1.click()
 
 # Load the vocabulary set
-response=requests.get(ccsite)
-html_content=response.text
-html=BeautifulSoup(html_content, "html.parser")
-# card_element=""
-card_element=wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, "body > div.mw-1080 > div.p-b-sm > div.set-body.m-t-25.m-b-lg > div.tab-content.m-t-sm > div.tab_set_all > div.flip-body.word-set.m-t-md.m-b-mb")))
+# response=requests.get(ccsite)
+# html_content=response.text
+# html=BeautifulSoup(html_content, "html.parser")
+# # card_element=""
+# card_element=wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, "body > div.mw-1080 > div.p-b-sm > div.set-body.m-t-25.m-b-lg > div.tab-content.m-t-sm > div.tab_set_all > div.flip-body.word-set.m-t-md.m-b-mb")))
 # card_element="body > div.mw-1080 > div.p-b-sm > div.set-body.m-t-25.m-b-lg > div.tab-content.m-t-sm > div.tab_set_all > div.flip-body.word-set.m-t-md.m-b-mb"
 
-div_elements=html.select(card_element)
-num=len(div_elements)
-print (num)
+# div_elements=html.select(card_element)
+# num=len(div_elements)
+# print (num)
 
-# world_learn(ccsite,num)
+num=int(input("input num. 임시입니다"))
+world_learn(ccsite,num)
 
-# time.sleep(1)
+time.sleep(1)
 
-# from function import eng, kor, mean
-# print (eng)
-# print(kor)
-# print(mean)
+from function import eng, kor, mean
+print (eng)
+print(kor)
+print(mean)
