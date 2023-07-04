@@ -24,7 +24,7 @@ check=input("Proceed? (Y/n)...")
 if check=='y':
     pass
 else :
-    print("크롬 브라우저를 설치하시겠습니까?")
+    print("크롬 브라우저를 설치하시겠습니까?\n(안정적인 구동을 위해 설치를 권장합니다.)")
     check=input("Proceed? (Y/n)...")
     if check=='y':
         options=webdriver.ChromeOptions()
@@ -66,8 +66,10 @@ except:
 # Classcard Vocabulary Set change range to all
 wait=WebDriverWait(driver, 10)
 rangesel=wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, "body > div.mw-1080 > div.p-b-sm > div.set-body.m-t-25.m-b-lg > div.m-b-md > div > a")))
+
 rangesel.click()
 rangesel1=wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, "body > div.mw-1080 > div.p-b-sm > div.set-body.m-t-25.m-b-lg > div.m-b-md > div > ul > li:nth-child(1)")))
+
 rangesel1.click()
 
 # Load the vocabulary set
