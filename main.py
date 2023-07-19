@@ -1,21 +1,33 @@
 # Import Modules
-import requests
+# import requests
 import time
-import warnings
+# import warnings
 import chromedriver_autoinstaller
-
 
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 
-from bs4 import BeautifulSoup
+# from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.common.exceptions import ElementClickInterceptedException
-from selenium.common.exceptions import NoSuchElementException
+# from selenium.common.exceptions import ElementClickInterceptedException
+# from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.chrome.service import Service
 
-from function import world_learn
+import function
+
+# Start
+print("""
+CCM: ClassCard Macro by tir-tir
+version: 1.0.0
+      """)
+
+while True:
+    if function.networkconnection():
+        break
+    else:
+        print("Please connect to network for stable running.")
+        print("wating for connection...")
 
 # Chrome Driver Autoinstall & Setting
 print("크롬 브라우저가 컴퓨터에 설치되어 있습니까?")
@@ -24,7 +36,7 @@ check=input("Proceed? (Y/n)...")
 if check=='y':
     pass
 else :
-    print("크롬 브라우저를 설치하시겠습니까?\n(안정적인 구동을 위해 설치를 권장합니다.)")
+    print("크롬 브라우저를 설치하시겠습니까?\n(안정적인 구동을 위해 설치를 필요합니다.)")
     check=input("Proceed? (Y/n)...")
     if check=='y':
         options=webdriver.ChromeOptions()
@@ -85,7 +97,7 @@ rangesel1.click()
 # print (num)
 
 num=int(input("input num. 임시입니다"))
-world_learn(ccsite,num)
+function.world_learn(ccsite,num)
 
 time.sleep(1)
 

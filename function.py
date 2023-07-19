@@ -1,10 +1,17 @@
-import requests
+# import requests
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+import socket
 
-
+def networkconnection():
+    try:
+        socket.create_connection(("https://www.threeinrow.net",80))
+        return True
+    except:
+        return False
+    
 def world_learn (site, num):
     driver=webdriver.Chrome
     driver.get(site)
