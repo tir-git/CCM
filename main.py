@@ -43,8 +43,6 @@ else :
         options.add_experimental_option("excludeSwitches",["enable-logging"])
         driver=webdriver.Chrome()
         driver=webdriver.Chrome(service=Service(chromedriver_autoinstaller.install()),options=options)
-    else :
-        quit()
 
 # Classcard Login
 driver.get("https://www.classcard.net/login")
@@ -84,24 +82,3 @@ rangesel1=wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, "body > 
 
 rangesel1.click()
 
-# Load the vocabulary set
-# response=requests.get(ccsite)
-# html_content=response.text
-# html=BeautifulSoup(html_content, "html.parser")
-# # card_element=""
-# card_element=wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, "body > div.mw-1080 > div.p-b-sm > div.set-body.m-t-25.m-b-lg > div.tab-content.m-t-sm > div.tab_set_all > div.flip-body.word-set.m-t-md.m-b-mb")))
-# card_element="body > div.mw-1080 > div.p-b-sm > div.set-body.m-t-25.m-b-lg > div.tab-content.m-t-sm > div.tab_set_all > div.flip-body.word-set.m-t-md.m-b-mb"
-
-# div_elements=html.select(card_element)
-# num=len(div_elements)
-# print (num)
-
-num=int(input("input num. 임시입니다"))
-function.world_learn(ccsite,num)
-
-time.sleep(1)
-
-from function import eng, kor, mean
-print (eng)
-print(kor)
-print(mean)
