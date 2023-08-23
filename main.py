@@ -1,18 +1,14 @@
 # Import Modules
 # import requests
 import time
-# import warnings
-import chromedriver_autoinstaller
+from selenium.webdriver.support.ui import WebDriverWait
 
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 
-# from bs4 import BeautifulSoup
 from selenium import webdriver
-from selenium.webdriver.support.ui import WebDriverWait
-# from selenium.common.exceptions import ElementClickInterceptedException
-# from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.chrome.service import Service
+import chromedriver_autoinstaller
 
 import function
 
@@ -20,29 +16,15 @@ import function
 print("""
 CCM: ClassCard Macro by tir-tir
 version: 1.0.0
-      """)
-
-while True:
-    if function.networkconnection():
-        break
-    else:
-        print("Please connect to network for stable running.")
-        print("wating for connection...")
+""")
 
 # Chrome Driver Autoinstall & Setting
-print("크롬 브라우저가 컴퓨터에 설치되어 있습니까?")
-check=input("Proceed? (Y/n)...")
-
-if check=='y':
-    pass
-else :
-    print("크롬 브라우저를 설치하시겠습니까?\n(안정적인 구동을 위해 설치를 필요합니다.)")
-    check=input("Proceed? (Y/n)...")
-    if check=='y':
-        options=webdriver.ChromeOptions()
-        options.add_experimental_option("excludeSwitches",["enable-logging"])
-        driver=webdriver.Chrome()
-        driver=webdriver.Chrome(service=Service(chromedriver_autoinstaller.install()),options=options)
+print("구동을 위해 크롬 드라이버를 설치하는 중입니다...")
+options=webdriver.ChromeOptions()
+options.add_experimental_option("excludeSwitches",["enable-logging"])
+chromedriver_autoinstaller.install()
+# driver=webdriver.Chrome(service=Service(chromedriver_autoinstaller.install()),options=options)
+driver=webdriver.Chrome(options=options)
 
 # Classcard Login
 driver.get("https://www.classcard.net/login")
@@ -62,6 +44,7 @@ loginbutton.click()
 # Input Classcard URL 
 ccsite=input("\n자동 학습을 원하는 Classcard 사이트의 URL을 입력하세요. : ")
 
+
 # Check if the URL is valid
 try:
     time.sleep(1)
@@ -76,9 +59,8 @@ except:
 # Classcard Vocabulary Set change range to all
 wait=WebDriverWait(driver, 10)
 rangesel=wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, "body > div.mw-1080 > div.p-b-sm > div.set-body.m-t-25.m-b-lg > div.m-b-md > div > a")))
-
 rangesel.click()
-rangesel1=wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, "body > div.mw-1080 > div.p-b-sm > div.set-body.m-t-25.m-b-lg > div.m-b-md > div > ul > li:nth-child(1)")))
 
+rangesel1=wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, "body > div.mw-1080 > div.p-b-sm > div.set-body.m-t-25.m-b-lg > div.m-b-md > div > ul > li:nth-child(1)")))
 rangesel1.click()
 
