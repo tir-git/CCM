@@ -1,1 +1,2 @@
 selenium==4.11.2
+requests==4.12.2
